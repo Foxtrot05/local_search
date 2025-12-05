@@ -1,0 +1,19 @@
+# searxng-config/settings.yml
+use_default_settings: true
+
+server:
+  # For better security, it's recommended to set the secret_key via an environment variable
+  # instead of hardcoding it. You can remove the line below and set this in your environment:
+  # export SEARXNG_SERVER_SECRET_KEY=$(openssl rand -hex 32)
+  secret_key: "k7mPq2xL9vRn4sTfYwAeGbHjKcNzXuVb" # Replace with a securely generated key
+  bind_address: "0.0.0.0"
+  bot_protection: false
+  limiter: false
+
+search:
+  safe_search: 0
+  language: en
+  formats:
+    - html
+    - json
+    - rss

@@ -1,0 +1,9 @@
+# docker-compose.yml
+services:
+  searxng:
+    image: searxng/searxng:latest
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./searxng-config:/etc/searxng:ro # Mount as read-only for better security
+    restart: unless-stopped

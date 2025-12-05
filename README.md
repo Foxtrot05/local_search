@@ -45,13 +45,13 @@ Configuration
 -------------
 Create a `.env` file in the same directory as `local_search.py` with the following variables:
 
-   SEARXNG_URL=http://localhost:8888/search
-   OLLAMA_MODEL=phi3
-   DB_HOST=localhost
-   DB_PORT=5432
-   DB_NAME=your_db_name
-   DB_USER=your_db_user
-   DB_PASSWORD=your_db_password
+   - SEARXNG_URL=http://localhost:8888/search
+   - OLLAMA_MODEL=phi3
+   - DB_HOST=localhost
+   - DB_PORT=5432
+   - DB_NAME=your_db_name
+   - DB_USER=your_db_user
+   - DB_PASSWORD=your_db_password
 
 Ethical Use
 -----------

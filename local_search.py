@@ -40,6 +40,22 @@ def get_db_connection():
         password=os.getenv("DB_PASSWORD")
     )
 
+def init_db():
+    """Create the web_cache table if it doesn't exist."""
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("""
+                    CREATE TABLE IF NOT EXISTS web_cache (
+                        url TEXT PRIMARY KEY,
+                        content TEXT,
+                        fetched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    );
+                """)
+                conn.commit()
+    except Exception as e:
+        print(f"[!] Database initialization failed: {e}")
+
 def get_cached_content(url: str) -> str | None:
     with get_db_connection() as conn:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -110,6 +126,7 @@ def parse_rss_results(rss_text: str) -> list[dict]:
 
 # === MAIN SEARCH FUNCTION ===
 def tavily_like_search(query: str) -> str:
+    init_db()  # Ensure DB table exists
     print(f"[+] Searching for: {query}")
     
     headers = SEARCH_HEADERS.copy()

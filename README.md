@@ -15,20 +15,35 @@ How It Works
 Requirements
 ------------
 - Python 3.8+
+- Docker Desktop (for running local SearXNG)
 - PostgreSQL database
 - Ollama (https://ollama.com) with a local LLM installed (e.g., `phi3`, `mistral`, or `gemma:2b`)
 - Internet connection (for web search)
-- Optional: Self-hosted SearXNG for higher reliability (public instances may throttle requests)
 
 Installation
 ------------
-1. Install Ollama and pull a model:
-   ollama pull phi3
+1. **Set up SearXNG (via Docker)**
+   This project includes a Docker Compose configuration for a local SearXNG instance. This is highly recommended for reliable, unlimited search access.
+   
+   Run the following in your terminal:
+   ```bash
+   docker-compose up -d
+   ```
+   *SearXNG will start on `http://localhost:8888`.*
 
-2. Install Python dependencies:
+2. **Install Ollama**
+   Install Ollama and pull a supported model:
+   ```bash
+   ollama pull llama3.2:1b
+   ```
+   *(Note: The default config uses `llama3.2:1b`, but you can change this in `.env`)*
+
+3. **Install Python Dependencies**
+   ```bash
    pip install -r requirements.txt
+   ```
 
-3. Set up configuration:
+4. **Set up Configuration**
    Create a `.env` file in the project root (see Configuration below).
 
 Usage
